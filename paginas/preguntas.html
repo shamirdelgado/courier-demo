@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Preguntas frecuentes | Courier Demo</title>
+        <meta
+            name="description"
+            content="Respuestas sobre Courier Demo: casillero, cotizador, rastreo, prealertas, datos ficticios y límites de la simulación."
+        />
+        <meta name="author" content="Shamir Delgado" />
+        <meta name="theme-color" content="#2457d6" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_CR" />
+        <meta property="og:title" content="Preguntas frecuentes | Courier Demo" />
+        <meta
+            property="og:description"
+            content="Respuestas sobre Courier Demo: casillero, cotizador, rastreo, prealertas, datos ficticios y límites de la simulación."
+        />
+        <meta property="og:site_name" content="Courier Demo" />
+        <meta property="og:image" content="../img/ilustraciones/og-cover.png" />
+        <meta
+            property="og:image:alt"
+            content="Courier Demo: de tu tienda favorita a tu puerta. Proyecto de portafolio."
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" type="image/svg+xml" href="../img/logo/favicon.svg" />
+        <link rel="stylesheet" href="../css/base.css" />
+        <link rel="stylesheet" href="../css/formularios.css" />
+        <link rel="stylesheet" href="../css/informacion.css" />
+        <script src="../js/components.js" defer></script>
+        <script src="../js/demo-data.js" defer></script>
+        <script src="../js/common.js" defer></script>
+        <script src="../js/preguntas.js" defer></script>
+    </head>
+    <body class="courier-demo" data-root=".." data-page="preguntas">
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+        <header class="site-header" id="site-header"></header>
+        <p class="demo-notice" id="demo-notice">
+            <strong>Demo: no se guardan datos reales.</strong>
+            <span>Usa solo datos ficticios.</span>
+        </p>
+        <noscript
+            ><p class="site-wrap noscript">
+                Activa JavaScript para usar las simulaciones. <a href="../index.html">Inicio</a> ·
+                <a href="../paginas/cotizar.html">Cotizador</a> ·
+                <a href="../paginas/preguntas.html">Preguntas frecuentes</a>
+            </p></noscript
+        >
+        <main id="contenido" tabindex="-1">
+            <div class="site-wrap">
+                <div class="page-intro">
+                    <nav class="breadcrumb" aria-label="Ubicación">
+                        <a href="../index.html">Inicio</a><span aria-hidden="true">/</span
+                        ><span>Preguntas frecuentes</span>
+                    </nav>
+                    <span class="eyebrow">Preguntas frecuentes</span>
+                    <h1>Preguntas frecuentes</h1>
+                    <p>
+                        Encuentra la respuesta que necesitas sobre las herramientas, el casillero
+                        ficticio y lo que esta demo puede hacer.
+                    </p>
+                </div>
+                <div class="page-content info-layout">
+                    <aside class="info-aside">
+                        <div class="icon-box">
+                            <svg
+                                class="icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5zM10 21h4" />
+                            </svg>
+                        </div>
+                        <h2>¿Por dónde empiezo?</h2>
+                        <p>
+                            Si es tu primera visita, prueba el cotizador o el rastreo. No necesitas
+                            registrarte para explorar el sitio.
+                        </p>
+                        <a class="btn btn-secondary" href="cotizar.html"
+                            >Probar el cotizador<svg
+                                class="icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M5 12h14m-6-6 6 6-6 6" /></svg
+                        ></a>
+                    </aside>
+                    <section>
+                        <h2 class="sr-only">Preguntas y respuestas</h2>
+                        <div class="faq-search">
+                            <div class="field">
+                                <label for="faqSearch">Buscar una pregunta</label
+                                ><input
+                                    id="faqSearch"
+                                    name="faqSearch"
+                                    type="search"
+                                    placeholder="Ejemplo: factura, datos, rastreo"
+                                    autocomplete="off"
+                                />
+                                <p class="error-message" id="faqSearch-error" hidden></p>
+                            </div>
+                        </div>
+                        <div class="faq-list">
+                            <details>
+                                <summary>¿Cómo obtengo mi casillero?</summary>
+                                <div>
+                                    <p>
+                                        Completa el registro de demostración. Al final verás una
+                                        dirección inventada y podrás entrar al panel. No se crea una
+                                        cuenta ni un casillero reales.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿La demo guarda mis datos?</summary>
+                                <div>
+                                    <p>
+                                        No. Los formularios se validan en tu navegador y las
+                                        contraseñas se descartan. Solo se recuerda el nombre
+                                        ficticio «Alex Demo» mientras exploras la demo. Se elimina
+                                        al salir o cerrar la pestaña.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Cómo puedo rastrear un paquete?</summary>
+                                <div>
+                                    <p>
+                                        Usa DEMO-1001, DEMO-1002 o DEMO-1003. Cada código tiene un
+                                        estado y una línea de tiempo ficticios. Los demás códigos
+                                        muestran un mensaje de paquete no encontrado.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Cómo se calcula el precio?</summary>
+                                <div>
+                                    <p>
+                                        El cotizador convierte el peso a kilogramos, aplica una
+                                        tarifa ficticia según el envío y suma manejo, seguro e
+                                        impuestos de ejemplo. El desglose indica cada importe. No es
+                                        una tarifa comercial ni una liquidación aduanera.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Qué diferencia hay entre aéreo y marítimo?</summary>
+                                <div>
+                                    <p>
+                                        En esta simulación, el aéreo tiene una tarifa mayor y un
+                                        plazo de ejemplo más corto. El marítimo aplica un mínimo de
+                                        peso mayor y un plazo de ejemplo más largo. Los plazos no
+                                        representan un servicio real.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Qué significa prealertar?</summary>
+                                <div>
+                                    <p>
+                                        Es anunciar un paquete antes de su llegada: código, tienda,
+                                        descripción y valor. Aquí verás un resumen en la misma
+                                        pantalla. No se transmite la prealerta ni se añade a una
+                                        base de datos.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Qué pasa con la factura que selecciono?</summary>
+                                <div>
+                                    <p>
+                                        Puedes revisar un archivo JPG, PNG o PDF de ejemplo de hasta
+                                        2 MB. El archivo permanece en tu navegador: no se sube ni se
+                                        guarda. Usa solamente un documento ficticio.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Las tiendas están afiliadas al sitio?</summary>
+                                <div>
+                                    <p>
+                                        No. Los logos pequeños enlazan a las páginas de sus
+                                        respectivas tiendas, sin parámetros de rastreo. Courier Demo
+                                        no tiene afiliación, patrocinio ni relación comercial con
+                                        esas marcas.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Qué artículos tienen restricciones?</summary>
+                                <div>
+                                    <p>
+                                        La página de artículos restringidos muestra categorías
+                                        ilustrativas para explicar este paso del proceso. No es una
+                                        lista oficial ni permite determinar si un producto puede
+                                        importarse.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Puedo pagar o recibir un envío?</summary>
+                                <div>
+                                    <p>
+                                        No. Courier Demo es un proyecto de portafolio. No procesa
+                                        pagos, realiza compras, recibe paquetes ni ofrece
+                                        transporte.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Qué hace la opción de consolidar paquetes?</summary>
+                                <div>
+                                    <p>
+                                        En un courier sería agrupar varios paquetes. La tarjeta de
+                                        consolidación de este sitio explica el concepto; no realiza
+                                        operaciones sobre paquetes reales.
+                                    </p>
+                                </div>
+                            </details>
+                            <details>
+                                <summary>¿Cómo funcionan las entregas y el soporte?</summary>
+                                <div>
+                                    <p>
+                                        Las entregas, plazos y perfiles de ayuda son escenarios
+                                        ficticios. Puedes probar el formulario de contacto para ver
+                                        una respuesta de ejemplo, pero no se envían mensajes ni se
+                                        llama a personas.
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                        <p id="faqEmpty" class="muted" role="status" hidden>
+                            No encontramos preguntas con esa búsqueda. Prueba otra palabra.
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer" id="site-footer"></footer>
+        <div class="toast" id="toast" role="status" hidden></div>
+    </body>
+</html>

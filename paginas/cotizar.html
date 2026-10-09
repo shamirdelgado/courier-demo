@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Cotizador de envío | Courier Demo</title>
+        <meta
+            name="description"
+            content="Calcula un precio ficticio de envío con peso, valor, seguro e impuestos de ejemplo. Cotizador estático, sin tarifas comerciales."
+        />
+        <meta name="author" content="Shamir Delgado" />
+        <meta name="theme-color" content="#2457d6" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_CR" />
+        <meta property="og:title" content="Cotizador de envío | Courier Demo" />
+        <meta
+            property="og:description"
+            content="Calcula un precio ficticio de envío con peso, valor, seguro e impuestos de ejemplo. Cotizador estático, sin tarifas comerciales."
+        />
+        <meta property="og:site_name" content="Courier Demo" />
+        <meta property="og:image" content="../img/ilustraciones/og-cover.png" />
+        <meta
+            property="og:image:alt"
+            content="Courier Demo: de tu tienda favorita a tu puerta. Proyecto de portafolio."
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" type="image/svg+xml" href="../img/logo/favicon.svg" />
+        <link rel="stylesheet" href="../css/base.css" />
+        <link rel="stylesheet" href="../css/formularios.css" />
+        <script src="../js/components.js" defer></script>
+        <script src="../js/demo-data.js" defer></script>
+        <script src="../js/common.js" defer></script>
+        <script src="../js/cotizar.js" defer></script>
+    </head>
+    <body class="courier-demo" data-root=".." data-page="cotizar">
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+        <header class="site-header" id="site-header"></header>
+        <p class="demo-notice" id="demo-notice">
+            <strong>Demo: no se guardan datos reales.</strong>
+            <span>Usa solo datos ficticios.</span>
+        </p>
+        <noscript
+            ><p class="site-wrap noscript">
+                Activa JavaScript para usar las simulaciones. <a href="../index.html">Inicio</a> ·
+                <a href="../paginas/cotizar.html">Cotizador</a> ·
+                <a href="../paginas/preguntas.html">Preguntas frecuentes</a>
+            </p></noscript
+        >
+        <main id="contenido" tabindex="-1">
+            <div class="site-wrap">
+                <div class="page-intro">
+                    <nav class="breadcrumb" aria-label="Ubicación">
+                        <a href="../index.html">Inicio</a><span aria-hidden="true">/</span
+                        ><span>Cotizador de envío</span>
+                    </nav>
+                    <span class="eyebrow">Cotizador</span>
+                    <h1>Cotizador de envío</h1>
+                    <p>
+                        Compara un envío aéreo o marítimo y revisa cada parte del costo. Todas las
+                        tarifas e impuestos son ficticios.
+                    </p>
+                </div>
+                <div class="page-content form-layout">
+                    <section class="card form-card">
+                        <h2>Tu envío de ejemplo</h2>
+                        <p>Completa los datos para generar una estimación.</p>
+                        <form id="quoteForm" novalidate>
+                            <div class="field">
+                                <label for="shippingType">Tipo de envío</label
+                                ><select id="shippingType" name="shippingType">
+                                    <option value="air">Aéreo · ejemplo</option>
+                                    <option value="sea">Marítimo · ejemplo</option>
+                                </select>
+                                <p class="error-message" id="shippingType-error" hidden></p>
+                            </div>
+                            <div class="fields-grid">
+                                <div class="field">
+                                    <label for="weight">Peso del paquete</label
+                                    ><input
+                                        id="weight"
+                                        name="weight"
+                                        type="number"
+                                        placeholder="Ejemplo: 2"
+                                        aria-describedby="weight-help"
+                                        required
+                                        min="0.01"
+                                        step="any"
+                                        inputmode="decimal"
+                                    /><span class="field-help" id="weight-help"
+                                        >Mayor que 0; máximo de ejemplo: 500 kg.</span
+                                    >
+                                    <p class="error-message" id="weight-error" hidden></p>
+                                </div>
+                                <div class="field">
+                                    <label for="weightUnit">Unidad de peso</label
+                                    ><select id="weightUnit" name="weightUnit">
+                                        <option value="kg">Kilogramos (kg)</option>
+                                        <option value="lb">Libras (lb)</option>
+                                    </select>
+                                    <p class="error-message" id="weightUnit-error" hidden></p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="productValue">Valor declarado (USD)</label
+                                ><input
+                                    id="productValue"
+                                    name="productValue"
+                                    type="number"
+                                    placeholder="Ejemplo: 100"
+                                    aria-describedby="productValue-help"
+                                    required
+                                    min="0.01"
+                                    max="50000"
+                                    step="0.01"
+                                    inputmode="decimal"
+                                /><span class="field-help" id="productValue-help"
+                                    >Valor de ejemplo, entre $0.01 y $50 000.</span
+                                >
+                                <p class="error-message" id="productValue-error" hidden></p>
+                            </div>
+                            <div class="field">
+                                <label for="productType">Categoría de ejemplo</label
+                                ><select id="productType" name="productType">
+                                    <option value="general">
+                                        Artículos generales · impuesto ficticio 13%
+                                    </option>
+                                    <option value="books">Libros · impuesto ficticio 0%</option>
+                                    <option value="clothing">Ropa · impuesto ficticio 20%</option>
+                                </select>
+                                <p class="error-message" id="productType-error" hidden></p>
+                            </div>
+                            <div class="checkbox-row">
+                                <input id="insurance" type="checkbox" checked /><label
+                                    for="insurance"
+                                    >Añadir seguro ficticio (1% del valor; mínimo $1).</label
+                                >
+                            </div>
+                            <div class="form-footer">
+                                <button class="btn btn-primary" type="submit">
+                                    Calcular estimación<svg
+                                        class="icon"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                                        <path d="M8 6h8M8 10h1m6 0h1M8 14h1m6 0h1M8 18h1m6 0h1" />
+                                    </svg></button
+                                ><button class="btn btn-text" id="quoteReset" type="button">
+                                    Limpiar campos
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                    <aside class="card aside-card">
+                        <span class="eyebrow">Desglose</span>
+                        <h2>Resumen del costo</h2>
+                        <div id="quoteEmpty" class="estimate-empty">
+                            <strong>$ —</strong>
+                            <p>Tu desglose aparecerá aquí.</p>
+                        </div>
+                        <div id="quoteResult" hidden aria-live="polite" aria-atomic="true"></div>
+                        <p class="rate-note">
+                            Tarifas ficticias: aéreo $8/kg (mínimo 0.5 kg), marítimo $3/kg (mínimo 2
+                            kg). Manejo: $3. Impuesto de ejemplo sobre valor + flete + seguro. El
+                            precio no incluye el valor de tu compra.
+                        </p>
+                    </aside>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer" id="site-footer"></footer>
+        <div class="toast" id="toast" role="status" hidden></div>
+    </body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Identificación ficticia | Courier Demo</title>
+        <meta
+            name="description"
+            content="Completa un identificador inventado para explorar el registro. No se solicitan documentos personales reales."
+        />
+        <meta name="author" content="Shamir Delgado" />
+        <meta name="theme-color" content="#2457d6" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_CR" />
+        <meta property="og:title" content="Identificación ficticia | Courier Demo" />
+        <meta
+            property="og:description"
+            content="Completa un identificador inventado para explorar el registro. No se solicitan documentos personales reales."
+        />
+        <meta property="og:site_name" content="Courier Demo" />
+        <meta property="og:image" content="../img/ilustraciones/og-cover.png" />
+        <meta
+            property="og:image:alt"
+            content="Courier Demo: de tu tienda favorita a tu puerta. Proyecto de portafolio."
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="icon" type="image/svg+xml" href="../img/logo/favicon.svg" />
+        <link rel="stylesheet" href="../css/base.css" />
+        <link rel="stylesheet" href="../css/formularios.css" />
+        <script src="../js/components.js" defer></script>
+        <script src="../js/demo-data.js" defer></script>
+        <script src="../js/common.js" defer></script>
+        <script src="../js/auth.js" defer></script>
+    </head>
+    <body class="courier-demo" data-root=".." data-page="identificacion" data-auth="identity">
+        <a class="skip-link" href="#contenido">Saltar al contenido</a>
+        <header class="site-header" id="site-header"></header>
+        <p class="demo-notice" id="demo-notice">
+            <strong>Demo: no se guardan datos reales.</strong>
+            <span>Usa solo datos ficticios.</span>
+        </p>
+        <noscript
+            ><p class="site-wrap noscript">
+                Activa JavaScript para usar las simulaciones. <a href="../index.html">Inicio</a> ·
+                <a href="../paginas/cotizar.html">Cotizador</a> ·
+                <a href="../paginas/preguntas.html">Preguntas frecuentes</a>
+            </p></noscript
+        >
+        <main id="contenido" tabindex="-1">
+            <div class="auth-layout">
+                <aside class="auth-story">
+                    <span class="eyebrow">Tu casillero de ejemplo</span>
+                    <h2>Cada dato tiene su lugar.</h2>
+                    <p>
+                        Para proteger tu privacidad usamos un identificador inventado. No escribas
+                        cédulas, pasaportes ni documentos reales.
+                    </p>
+                    <img
+                        src="../img/ilustraciones/casillero.svg"
+                        width="240"
+                        height="220"
+                        alt="Ilustración de una caja azul sobre una ruta de envío"
+                    />
+                </aside>
+                <section class="auth-form">
+                    <ol class="step-indicator" aria-label="Pasos del registro">
+                        <li class="">1. Registro</li>
+                        <li class="">2. Verifica</li>
+                        <li class="current" aria-current="step">3. Identifica</li>
+                        <li class="">4. Listo</li>
+                    </ol>
+                    <h1>Identificación ficticia.</h1>
+                    <p>Completa el identificador de ejemplo para terminar el recorrido.</p>
+                    <div class="notice-box">
+                        <strong>Solo demostración.</strong> El identificador de esta demo es
+                        <strong>DEMO-ID-001</strong>.
+                    </div>
+                    <form id="identityForm" novalidate>
+                        <div class="field">
+                            <label for="idNumber">Identificador de ejemplo</label
+                            ><input
+                                id="idNumber"
+                                name="idNumber"
+                                type="text"
+                                value="DEMO-ID-001"
+                                required
+                                maxlength="20"
+                                autocomplete="off"
+                            />
+                            <p class="error-message" id="idNumber-error" hidden></p>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Finalizar el registro<svg
+                                class="icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <footer class="site-footer" id="site-footer"></footer>
+        <div class="toast" id="toast" role="status" hidden></div>
+    </body>
+</html>

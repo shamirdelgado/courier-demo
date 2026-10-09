@@ -1,0 +1,103 @@
+.info-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+}
+.info-aside {
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+.info-aside h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+.info-aside p {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+.faq-search {
+    margin-bottom: 2rem;
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+.category-grid h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+}
+.category-grid p,
+.category-grid li {
+    color: var(--color-muted);
+    font-size: 0.84rem;
+}
+.category-grid ul {
+    padding-left: 1.15rem;
+    margin-bottom: 0;
+}
+.category-grid li {
+    margin-bottom: 0.4rem;
+}
+.category-grid .badge {
+    margin-bottom: 1rem;
+}
+.advisors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+.advisor-card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+.advisor-card p {
+    color: var(--color-muted);
+    font-size: 0.84rem;
+}
+.advisor-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.4rem;
+    border-radius: 50%;
+}
+.not-found {
+    text-align: center;
+    padding-block: 5rem;
+}
+.not-found img {
+    width: 170px;
+    margin: 0 auto 2rem;
+}
+.not-found .eyebrow {
+    font-size: 1rem;
+}
+.not-found h1 {
+    font-size: clamp(2.1rem, 5vw, 3.5rem);
+}
+.not-found p {
+    color: var(--color-muted);
+    max-width: 45ch;
+    margin: 1.3rem auto 2rem;
+}
+@media (max-width: 900px) {
+    .info-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .category-grid,
+    .advisors-grid {
+        grid-template-columns: 1fr;
+    }
+    .not-found {
+        padding-block: 3rem;
+    }
+}
