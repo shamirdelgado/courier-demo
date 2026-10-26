@@ -48,8 +48,10 @@
             preview.hidden = false;
         }
     });
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        result.hidden = true;
+        empty.hidden = false;
         const valid = ui.validate(form, {
             tracking: (val) =>
                 /^DEMO-\d{4}$/i.test(val) ? '' : 'Usa un código ficticio con el formato DEMO-2001.',
@@ -61,23 +63,25 @@
             return;
         }
         if (!valid) return;
-        const file = invoice.files[0];
-        ui.summaryRows(result, [
-            ['Código de ejemplo', form.tracking.value.trim().toUpperCase()],
-            ['Tienda ficticia', form.store.value.trim()],
-            ['Producto ficticio', form.description.value.trim()],
-            ['Valor declarado', ui.money(Number(form.value.value))],
-            ['Archivo local', file ? file.name : 'Sin archivo'],
-        ]);
-        result.append(
-            ui.text(
-                'p',
-                'Prealerta revisada en modo demo. No se envió, no se guardó y no se añadió a la lista de paquetes.',
-                'status-message',
-            ),
-        );
-        empty.hidden = true;
-        result.hidden = false;
+        await ui.busy(form.querySelector('[type="submit"]'), result, 'Revisando prealerta…', () => {
+            const file = invoice.files[0];
+            ui.summaryRows(result, [
+                ['Código de ejemplo', form.tracking.value.trim().toUpperCase()],
+                ['Tienda ficticia', form.store.value.trim()],
+                ['Producto ficticio', form.description.value.trim()],
+                ['Valor declarado', ui.money(Number(form.value.value))],
+                ['Archivo local', file ? file.name : 'Sin archivo'],
+            ]);
+            result.append(
+                ui.text(
+                    'p',
+                    'Prealerta revisada en modo demo. No se envió, no se guardó y no se añadió a la lista de paquetes.',
+                    'status-message',
+                ),
+            );
+            empty.hidden = true;
+            result.hidden = false;
+        });
     });
     form.addEventListener('input', clearSummary);
     form.addEventListener('reset', () => {

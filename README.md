@@ -1,101 +1,77 @@
 # Courier Demo
 
-Sitio web de demostración que simula el recorrido de una compra en Estados Unidos con destino a Costa Rica: casillero, cotizador, rastreo y prealertas.
+Demostración de una plataforma para casilleros que reciben compras en Estados Unidos y las envían a Costa Rica. Está dirigida a dueños de casilleros pequeños y medianos que hoy trabajan con Excel y WhatsApp, y permite explorar la experiencia de sus clientes.
 
-**Demo en vivo:** https://shamirdelgado.github.io/courier-demo/
+**Demo:** https://shamirdelgado.github.io/courier-demo/
 
-Hecho con **HTML, CSS y JavaScript puros**, sin frameworks, sin compilación y sin backend. Todos los datos (marca, casillero, paquetes, costos, fechas) son ficticios. Este proyecto no ofrece servicios comerciales ni debe recibir datos reales.
+## Qué puedes ver
 
-## Qué se puede probar
+- [Para casilleros](paginas/para-casilleros.html): propuesta, alcance, proceso de trabajo y contacto directo para agendar una demo.
+- Portal de clientes con casillero de ejemplo, paquetes y filtros.
+- Registro y acceso simulados, rastreo por etapas y prealertas con factura local opcional.
+- Cotizador con conversión kg/lb, mínimos, manejo, seguro e impuestos de ejemplo.
+- [Privacidad](paginas/privacidad.html), ayuda y preguntas frecuentes.
 
-- Portada con ilustración SVG propia y animación CSS ligera.
-- Registro de ejemplo en cuatro pantallas: registro → verificación → identificación ficticia → confirmación.
-- Acceso simulado al panel.
-- Cotizador con conversión kg/lb, mínimos facturables, seguro, manejo e impuestos de ejemplo, con desglose.
-- Rastreo con tres códigos y línea de tiempo por paquete.
-- Lista de paquetes con filtro por estado.
-- Prealerta con validación y vista previa opcional de una factura de ejemplo.
-- Preguntas frecuentes con acordeón y filtro de búsqueda.
-- Formulario de contacto que responde de forma local y nunca envía mensajes.
-- Diseño adaptable a celular y navegación con teclado.
+La demo es un sitio estático con HTML, CSS y JavaScript, sin compilación ni backend. Los formularios solo se procesan en memoria: no se envían ni se guardan datos, contraseñas o archivos; no se usan cookies, analítica ni almacenamiento local o de sesión. La factura opcional (JPG, PNG o PDF, hasta 2 MB) se revisa únicamente en el navegador. Usa datos inventados.
 
-## Datos para probar
+“Agenda una demo” abre un borrador en tu aplicación de correo; tú decides si lo envías. El alojamiento puede procesar registros técnicos y los sitios externos tienen sus propias políticas.
 
-| Herramienta | Ejemplo |
-| --- | --- |
-| Correo | `hola@ejemplo.com` |
-| Contraseña de ejemplo | `Demo1234` |
-| Código de verificación | `123456` |
-| Identificación ficticia | `DEMO-ID-001` |
-| Casillero | `DEMO-000` |
-| Paquete en tránsito | `DEMO-1001` |
-| Paquete entregado | `DEMO-1002` |
-| Paquete recibido | `DEMO-1003` |
-| Nueva prealerta | `DEMO-2001` |
+## Qué se desarrolla para un negocio real
 
-## Ejecutar en local
+La versión a medida se conecta a una base de datos real y se adapta a las tarifas, logo, colores y dominio del casillero. El panel de bodega para recepción y pesaje, los avisos automáticos, los permisos y las integraciones se construyen según el alcance acordado. La factura electrónica se integra en una etapa posterior. La demo no implementa estas funciones operativas.
 
-1. Clona el repositorio:
+El trabajo empieza con una conversación sobre la operación, continúa con una versión inicial con la marca del negocio y contempla acompañamiento y mejoras según lo acordado. El tratamiento de datos de la versión real se diseña con el compromiso de cumplir la Ley 8968 de Costa Rica; no se declara ninguna certificación.
 
-   ```bash
-   git clone https://github.com/shamirdelgado/courier-demo.git
-   ```
+## Cómo verlo en local
 
-2. Abre `index.html` en el navegador.
+Desde esta carpeta, con Python instalado:
 
-Opcionalmente, con Python instalado, puedes levantar un servidor local desde la carpeta del proyecto:
-
-```bash
+```sh
 python -m http.server 8000
 ```
 
-Luego abre `http://localhost:8000`.
+Abre `http://localhost:8000`. También puedes abrir `index.html` directamente. No hace falta instalar dependencias.
 
-## Lógica del cotizador
+## Datos para probar
 
-Todas las tarifas y porcentajes son de ejemplo y no corresponden a tarifas ni impuestos reales.
+| Pantalla | Ejemplo |
+| --- | --- |
+| Correo y contraseña | `hola@ejemplo.com` / `Demo1234` |
+| Verificación | `123456` |
+| Identificación | `DEMO-ID-001` |
+| Casillero | `DEMO-000` |
+| Rastreo | `DEMO-1001`, `DEMO-1002`, `DEMO-1003` |
+| Prealerta | `DEMO-2001` |
 
-```text
-kg = peso ingresado (o libras × 0.45359237)
-peso facturable = máximo(kg, mínimo de la modalidad)
-flete = peso facturable × tarifa por kg
-seguro opcional = máximo($1, valor declarado × 1%)
-base de impuesto = valor declarado + flete + seguro
-impuesto = base × porcentaje de la categoría
-total del envío = flete + manejo + seguro + impuesto
+El acceso solo valida el formato; no autentica usuarios. Los paquetes son ejemplos fijos. Revisar una prealerta no la añade a la lista. No hay dirección física operativa, pagos ni envíos reales.
+
+## Cálculos de ejemplo
+
+Todas las tarifas y porcentajes son ficticios, sin valor comercial ni aduanero:
+
+- Aéreo: $8/kg, mínimo 0.5 kg. Marítimo: $3/kg, mínimo 2 kg.
+- Manejo: $3. Seguro opcional: máximo entre $1 y 1% del valor declarado.
+- Impuesto de ejemplo: general 13%, libros 0%, ropa 20%, aplicado sobre valor + flete + seguro.
+- Total del envío: flete + manejo + seguro + impuesto; excluye el valor de la compra.
+- Conversión: libras × 0.45359237 = kilogramos.
+
+## Estructura y mantenimiento
+
+`index.html` es la portada; `paginas/` contiene las pantallas; `css/` los estilos; `js/` las interacciones; `img/` los recursos. El menú se genera en `js/components.js`. El pie y los metadatos están en cada HTML para estar disponibles sin JavaScript. Si cambias la URL de publicación, actualiza canonical, `og:url` y `og:image` en todas las páginas.
+
+Para comprobar la sintaxis de todos los scripts:
+
+```sh
+for archivo in js/*.js; do node --check "$archivo" || exit 1; done
 ```
 
-- Aéreo: $8/kg, mínimo 0.5 kg.
-- Marítimo: $3/kg, mínimo 2 kg.
-- Manejo: $3.
-- Categorías de ejemplo: general 13%, libros 0%, ropa 20%.
+Courier Demo es una marca de demostración. Los logos de tiendas son referencias para “compra en tiendas como…”, sin alianzas, patrocinio ni afiliación.
 
-## Estructura del proyecto
+## Contacto
 
-| Ubicación | Contenido |
-| --- | --- |
-| `index.html` | Portada: tiendas, pasos, servicios, preguntas frecuentes y contacto. |
-| `paginas/` | Registro, login, verificación, cotizador, rastreo, panel, paquetes, prealerta y ayuda. |
-| `css/` | Estilos base, portada, formularios, panel e información. |
-| `js/` | Lógica de cada pantalla: autenticación simulada, cotizador, rastreo, panel y prealerta. |
-| `img/` | Ilustraciones SVG propias, logotipos y recursos gráficos. |
-| `404.html` | Página de error para rutas inexistentes. |
+**Shamir Delgado** — desarrollador full-stack junior, San José, Costa Rica. Trabajo remoto.
 
-## Privacidad
-
-- No se guardan contraseñas, correos, teléfonos ni documentos.
-- No se usan `fetch`, cookies, analítica ni servicios externos de correo.
-- Los archivos de la prealerta se revisan solo en el navegador (máximo 2 MB).
-
-## Marcas y recursos
-
-Courier Demo es una marca ficticia. Los logos de tiendas pertenecen a sus respectivos propietarios; se muestran únicamente como enlaces de referencia y no implican afiliación, patrocinio ni respaldo. Las ilustraciones, el favicon y la portada social se crearon para este proyecto.
-
-## Autor
-
-**Shamir Delgado**
-
-- Portafolio: https://shamirdelgado.github.io
-- GitHub: https://github.com/shamirdelgado
+- Correo: [uzziellanuza@gmail.com](mailto:uzziellanuza@gmail.com)
 - LinkedIn: https://www.linkedin.com/in/shamir-delgado-lanuza-0b7274314
-- Correo: uzziellanuza@gmail.com
+- GitHub: https://github.com/shamirdelgado
+- Portafolio: https://shamirdelgado.github.io/

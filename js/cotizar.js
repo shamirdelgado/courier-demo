@@ -27,8 +27,10 @@
         };
     }
     window.DemoQuote = Object.freeze({ calculate });
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        result.hidden = true;
+        empty.hidden = false;
         const unit = document.getElementById('weightUnit').value;
         const valid = ui.validate(form, {
             weight: (val) =>
@@ -37,13 +39,14 @@
                     : '',
         });
         if (!valid) return;
-        const data = calculate({
-            weight: Number(form.weight.value),
-            unit,
-            value: Number(form.productValue.value),
-            type: form.shippingType.value,
-            category: form.productType.value,
-            insurance: document.getElementById('insurance').checked,
+        await ui.busy(form.querySelector('[type="submit"]'), result, 'Calculando…', () => {
+            const data = calculate({
+                weight: Number(form.weight.value),
+                unit,
+                value: Number(form.productValue.value),
+                type: form.shippingType.value,
+                category: form.productType.value,
+                insurance: document.getElementById('insurance').checked,
         });
         ui.summaryRows(result, [
             ['Peso convertido', `${data.kg.toFixed(2)} kg`],
@@ -58,6 +61,7 @@
         result.append(total, ui.text('p', data.days, 'rate-note'));
         empty.hidden = true;
         result.hidden = false;
+        });
     });
     const clearResult = () => {
         result.hidden = true;

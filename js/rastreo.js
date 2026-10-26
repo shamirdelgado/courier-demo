@@ -11,6 +11,10 @@
             `badge${status === 'delivered' ? ' badge-success' : status === 'received' ? ' badge-neutral' : ''}`,
         );
     function render(code) {
+        if (!code) {
+            target.replaceChildren(ui.text('p', 'Escribe un código o elige un paquete de ejemplo para ver su recorrido.', 'notice-box'));
+            return;
+        }
         target.replaceChildren();
         const input = document.getElementById('tracking');
         input.value = code;
@@ -63,12 +67,22 @@
     }
     const fromHash = () => {
         try {
-            return decodeURIComponent(location.hash.slice(1)).trim().toUpperCase() || 'DEMO-1001';
+            return decodeURIComponent(location.hash.slice(1)).trim().toUpperCase() || '';
         } catch {
             return 'CÓDIGO NO VÁLIDO';
         }
     };
-    render(fromHash());
-    window.addEventListener('hashchange', () => render(fromHash()));
-    window.addEventListener('demo:tracking', (event) => render(event.detail));
+    let revision = 0;
+    async function show(code) {
+        const current = ++revision;
+        target.setAttribute('aria-busy', 'true');
+        target.replaceChildren(ui.text('p', 'Consultando paquete de ejemplo…', 'notice-box'));
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        if (current !== revision) return;
+        render(code);
+        target.removeAttribute('aria-busy');
+    }
+    show(fromHash());
+    window.addEventListener('hashchange', () => show(fromHash()));
+    window.addEventListener('demo:tracking', (event) => show(event.detail));
 })();

@@ -25,7 +25,6 @@
                 })
             )
                 return;
-            ui.setName();
             forget(register);
             register.reset();
             location.href = 'verificacion.html';
@@ -35,7 +34,6 @@
         login.addEventListener('submit', (event) => {
             event.preventDefault();
             if (!ui.validate(login, { password: rulePassword })) return;
-            ui.setName();
             forget(login);
             login.reset();
             location.href = 'panel.html';
@@ -73,7 +71,6 @@
                 })
             )
                 return;
-            ui.setName();
             identity.reset();
             location.href = 'confirmacion.html';
         });

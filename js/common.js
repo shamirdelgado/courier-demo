@@ -28,6 +28,7 @@
             input.insertAdjacentElement('afterend', node);
         }
         node.textContent = message;
+        node.setAttribute('aria-live', 'polite');
         node.hidden = !message;
         if (message) {
             input.setAttribute('aria-invalid', 'true');
@@ -85,37 +86,11 @@
             container.append(row);
         });
     };
-    const setName = () => {
-        try {
-            sessionStorage.setItem('courierDemoName', 'Alex Demo');
-        } catch {
-            /* La demo funciona también sin almacenamiento. */
-        }
-    };
-    // Borro solo los datos del registro antiguo que guardaba contraseñas.
-    try {
-        const old = JSON.parse(localStorage.getItem('userData'));
-        if (
-            old &&
-            typeof old.password === 'string' &&
-            typeof old.email === 'string' &&
-            typeof old.firstName === 'string' &&
-            typeof old.lastName1 === 'string'
-        )
-            localStorage.removeItem('userData');
-    } catch {
-        /* file:// o almacenamiento deshabilitado. */
-    }
     document.querySelectorAll('[data-demo-name]').forEach((node) => {
         node.textContent = 'Alex Demo';
     });
     document.querySelectorAll('[data-logout]').forEach((button) =>
         button.addEventListener('click', () => {
-            try {
-                sessionStorage.removeItem('courierDemoName');
-            } catch {
-                /* No afecta a la navegación. */
-            }
             location.href = `${prefix}index.html`;
         }),
     );
@@ -144,9 +119,11 @@
             event.preventDefault();
             const input = form.querySelector('input');
             if (!input.value.trim()) {
+                error(input, 'Escribe un código de ejemplo, como DEMO-1001.');
                 input.focus();
                 return;
             }
+            error(input, '');
             track(input.value);
         }),
     );
@@ -175,8 +152,28 @@
         error,
         validate,
         summaryRows,
-        setName,
         track,
+        async busy(button, region, message, task) {
+            const label = button.textContent;
+            const controls = [...(button.form?.elements || [])].filter((field) => !field.disabled);
+            controls.forEach((field) => { field.disabled = true; });
+            button.disabled = true;
+            button.textContent = message;
+            region.setAttribute('aria-busy', 'true');
+            try {
+                // Deja que el navegador anuncie el estado antes de mostrar el resumen.
+                await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+                await task();
+            } catch {
+                region.hidden = false;
+                region.replaceChildren(text('p', 'Le pedimos revisar los datos e intentarlo de nuevo. No se guardó ni envió información.', 'error-message'));
+            } finally {
+                controls.forEach((field) => { field.disabled = false; });
+                button.disabled = false;
+                button.textContent = label;
+                region.removeAttribute('aria-busy');
+            }
+        },
         prefix,
     });
 })();

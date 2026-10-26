@@ -12,22 +12,8 @@
             ? ' aria-current="page"'
             : '';
     const header = document.getElementById('site-header');
-    const footer = document.getElementById('site-footer');
     if (header)
-        header.innerHTML = `<div class="site-wrap header-inner">${marca}<button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">Menú <span aria-hidden="true">☰</span></button><nav class="site-nav" id="site-navigation" aria-label="Navegación principal"><a href="${inicio}"${marcarActual('inicio')}>Inicio</a><a href="${inicio}#como-funciona">Cómo funciona</a><a href="${inicio}#servicios">Servicios</a><a href="${enlacePagina('cotizar')}"${marcarActual('cotizar')}>Cotizar</a><a href="${enlacePagina('rastreocodigo')}"${marcarActual('rastreocodigo')}>Rastrear</a><a href="${enlacePagina('panel')}"${marcarActual('panel')}>Mi cuenta</a><a href="${enlacePagina('registro')}" class="nav-cta"${marcarActual('registro')}>Probar casillero <span aria-hidden="true">↗</span></a></nav></div>`;
-    if (footer)
-        footer.innerHTML = `<div class="site-wrap"><div class="footer-grid"><div class="footer-about">${marca}<p>Sitio de práctica sobre un casillero de compras en Estados Unidos con envíos a Costa Rica.</p><span class="small">Marca ficticia · sin servicios comerciales</span></div><div><h2>HERRAMIENTAS</h2><ul><li><a href="${enlacePagina('cotizar')}">Cotizador de envío</a></li><li><a href="${enlacePagina('rastreocodigo')}">Rastreo de paquetes</a></li><li><a href="${enlacePagina('prealerta')}">Prealerta</a></li><li><a href="${enlacePagina('panel')}">Mi casillero de ejemplo</a></li></ul></div><div><h2>INFORMACIÓN</h2><ul><li><a href="${enlacePagina('preguntas')}">Preguntas frecuentes</a></li><li><a href="${enlacePagina('productos')}">Artículos restringidos</a></li><li><a href="${enlacePagina('asesores')}">Ayuda de ejemplo</a></li><li><a href="${inicio}#contacto">Contacto ficticio</a></li></ul></div></div><div class="footer-author">
-    <div class="footer-author-info">
-        <span class="footer-author-label">Proyecto de portafolio</span>
-        <p>Shamir Delgado</p>
-        <span class="small">HTML, CSS y JavaScript</span>
-    </div>
-    <nav class="footer-author-links" aria-label="Enlaces de Shamir Delgado">
-        <a href="https://github.com/shamirdelgado" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (abre una pestaña nueva)</span></a>
-        <a href="https://www.linkedin.com/in/shamir-delgado-lanuza-0b7274314" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (abre una pestaña nueva)</span></a>
-        <a href="mailto:uzziellanuza@gmail.com">uzziellanuza@gmail.com</a>
-    </nav>
-</div><div class="footer-bottom"><p>Courier Demo no presta servicios, procesa pagos ni envía paquetes. Las marcas y logos de tiendas pertenecen a sus dueños. Demo sin afiliación, patrocinio ni respaldo de esas marcas.</p><p class="footer-project">Shamir Delgado · 2026</p></div></div>`;
+        header.innerHTML = `<div class="site-wrap header-inner">${marca}<button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false">Menú <span aria-hidden="true">☰</span></button><nav class="site-nav" id="site-navigation" aria-label="Navegación principal"><a href="${inicio}"${marcarActual('inicio')}>Inicio</a><a class="nav-business" href="${enlacePagina('para-casilleros')}"${marcarActual('para-casilleros')}>Para casilleros</a><a href="${enlacePagina('cotizar')}"${marcarActual('cotizar')}>Cotizar</a><a href="${enlacePagina('rastreocodigo')}"${marcarActual('rastreocodigo')}>Rastrear</a><a href="${enlacePagina('panel')}"${marcarActual('panel')}>Mi cuenta</a><a href="${enlacePagina('registro')}" class="nav-cta"${marcarActual('registro')}>Probar casillero <span aria-hidden="true">↗</span></a></nav></div>`;
     const botonMenu = header?.querySelector('.nav-toggle');
     const menu = header?.querySelector('.site-nav');
     if (!botonMenu || !menu) return;
