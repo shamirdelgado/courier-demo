@@ -69,7 +69,7 @@ Courier Demo es una marca de demostración. Los logos de tiendas son referencias
 
 ## Contacto
 
-**Shamir Delgado** — desarrollador full-stack junior, San José, Costa Rica. Trabajo remoto.
+**Shamir Delgado** — desarrollador full-stack junior, San José, Costa Rica.
 
 - Correo: [uzziellanuza@gmail.com](mailto:uzziellanuza@gmail.com)
 - LinkedIn: https://www.linkedin.com/in/shamir-delgado-lanuza-0b7274314
