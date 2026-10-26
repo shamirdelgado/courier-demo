@@ -1,4 +1,3 @@
-// Prealerta de prueba: el resumen y el archivo se quedan en esta pantalla.
 (() => {
     'use strict';
     const form = document.getElementById('prealertForm');

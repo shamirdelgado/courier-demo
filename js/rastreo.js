@@ -1,4 +1,3 @@
-// Buscar un código entre los paquetes de ejemplo.
 (() => {
     'use strict';
     const target = document.getElementById('trackingResult');

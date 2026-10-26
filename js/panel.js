@@ -1,4 +1,3 @@
-// Mostrar los paquetes y filtrar por estado.
 (() => {
     'use strict';
     const body = document.getElementById('packageRows');

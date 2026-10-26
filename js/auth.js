@@ -1,4 +1,3 @@
-// Registro y login de prueba. Las contraseñas no se guardan.
 (() => {
     'use strict';
     const ui = window.DemoUI;

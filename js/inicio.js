@@ -1,4 +1,3 @@
-// El contacto muestra una confirmación local; no envía correos.
 (() => {
     'use strict';
     const form = document.getElementById('contactForm');

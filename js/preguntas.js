@@ -1,4 +1,3 @@
-// Buscar preguntas. El acordeón funciona con details y summary.
 (() => {
     'use strict';
     const search = document.getElementById('faqSearch');

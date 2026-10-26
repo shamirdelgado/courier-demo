@@ -1,4 +1,3 @@
-// El menú y el footer van aquí para no copiarlos en cada página.
 (() => {
     'use strict';
     const prefijo = document.body.dataset.root === '..' ? '../' : '';

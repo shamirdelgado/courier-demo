@@ -1,4 +1,3 @@
-// Calculadora de envío con tarifas inventadas.
 (() => {
     'use strict';
     const form = document.getElementById('quoteForm');
@@ -7,7 +6,6 @@
     const result = document.getElementById('quoteResult');
     const empty = document.getElementById('quoteEmpty');
     const round = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
-    // Función pura para poder comprobar conversiones, mínimos y totales.
     function calculate({ weight, unit, value, type, category, insurance }) {
         const kg = unit === 'lb' ? weight * 0.45359237 : weight;
         const minimum = type === 'sea' ? 2 : 0.5;

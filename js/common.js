@@ -1,4 +1,3 @@
-// Utilidades para validar campos y mostrar mensajes. No guardan formularios.
 (() => {
     'use strict';
     const prefix = document.body.dataset.root === '..' ? '../' : '';
@@ -93,7 +92,7 @@
             /* La demo funciona también sin almacenamiento. */
         }
     };
-    // Limpieza acotada del registro inseguro de la versión antigua de este proyecto.
+    // Borro solo los datos del registro antiguo que guardaba contraseñas.
     try {
         const old = JSON.parse(localStorage.getItem('userData'));
         if (
@@ -156,7 +155,7 @@
         .forEach((button) =>
             button.addEventListener('click', () => track(button.dataset.exampleCode)),
         );
-    // Al volver por el historial del navegador, tampoco restaurar contraseñas en la pantalla.
+    // El historial puede restaurar contraseñas al volver a esta página.
     const clearPasswords = () =>
         document
             .querySelectorAll(

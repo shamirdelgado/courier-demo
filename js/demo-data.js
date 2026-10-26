@@ -1,4 +1,3 @@
-// Paquetes de ejemplo para el panel y el rastreo.
 (() => {
     'use strict';
     const packages = [
